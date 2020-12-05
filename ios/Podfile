@@ -6,11 +6,15 @@ platform :ios, '10.0'
 target 'WordPower' do
   config = use_native_modules!
 
-  use_react_native!(:path => config["reactNativePath"])
+  use_react_native!(:path => config[:reactNativePath])
 
   target 'WordPowerTests' do
     inherit! :complete
     # Pods for testing
+  end
+
+  pre_install do |installer|
+    codegen_pre_install(installer)
   end
 
   # Enables Flipper.
@@ -23,11 +27,3 @@ target 'WordPower' do
   end
 end
 
-target 'WordPower-tvOS' do
-  # Pods for WordPower-tvOS
-
-  target 'WordPower-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-end
