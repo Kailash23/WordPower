@@ -1,17 +1,31 @@
 {
   "name": "WordPower",
   "version": "0.0.1",
+  "description": "WordPower mobile app with React Native",
+  "repository": "git@github.com:Kailash23/WordPower.git",
+  "author": "Kailash Uniyal",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "pod": "cd ios && pod install && cd ..",
+    "clean-android": "cd android && ./gradlew clean && cd ..",
+    "clean": "./scripts/clean.sh"
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.12.1",
+    "@react-native-community/masked-view": "^0.1.10",
+    "@react-navigation/native": "^5.8.10",
+    "@react-navigation/stack": "^5.12.8",
     "react": "17.0.1",
-    "react-native": "0.64.0-rc.1"
+    "react-native": "0.64.0-rc.1",
+    "react-native-gesture-handler": "^1.9.0",
+    "react-native-reanimated": "^1.13.2",
+    "react-native-safe-area-context": "^3.1.9",
+    "react-native-screens": "^2.15.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
