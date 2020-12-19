@@ -1,11 +1,20 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {useDispatch} from 'react-redux';
+import {loginRequest} from '../../redux/slices';
 import {typography} from '../../theme';
 
 export function SignIn() {
+  const dispatch = useDispatch();
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Sign In</Text>
+      <Text
+        style={styles.text}
+        onPress={() => {
+          dispatch(loginRequest());
+        }}>
+        Sign In
+      </Text>
     </View>
   );
 }

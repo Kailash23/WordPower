@@ -8,6 +8,8 @@ import {
   NavigationContainerRef,
 } from '@react-navigation/native';
 import {routes} from './routes';
+import {useSelector} from 'react-redux';
+import {getAuthState} from '../redux/selectors';
 
 const Stack = createStackNavigator();
 
@@ -15,7 +17,7 @@ export const RootNavigator = React.forwardRef<
   NavigationContainerRef,
   Partial<React.ComponentProps<typeof NavigationContainer>>
 >((props, ref) => {
-  const isAuthenticated = false;
+  const {isAuthenticated} = useSelector(getAuthState);
 
   return (
     <NavigationContainer {...props} ref={ref}>

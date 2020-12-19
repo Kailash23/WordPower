@@ -7,7 +7,12 @@ import {
   useNavigationPersistence,
 } from './navigation';
 import {NAVIGATION_PERSISTENCE_KEY} from './constants';
+import {Provider} from 'react-redux';
 import * as storage from './utils/storage';
+import {store, persistor} from './redux/store';
+import {PersistGate} from 'redux-persist/integration/react';
+// Optimize memory usage and performance
+// This puts screens in a native ViewController or Activity which
 import {enableScreens} from 'react-native-screens';
 enableScreens();
 
@@ -21,10 +26,14 @@ export default function App() {
   } = useNavigationPersistence(storage, NAVIGATION_PERSISTENCE_KEY);
 
   return (
-    <RootNavigator
-      ref={navigationRef}
-      initialState={initialNavigationState}
-      onStateChange={onNavigationStateChange}
-    />
+    <Provider store={store}>
+      <PersistGate loading={null} {...{persistor}}>
+        <RootNavigator
+          ref={navigationRef}
+          initialState={initialNavigationState}
+          onStateChange={onNavigationStateChange}
+        />
+      </PersistGate>
+    </Provider>
   );
 }
